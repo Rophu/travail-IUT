@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" media="screen" href="jeudespays.css">
+    <title></title>
+  </head>
+  <body>
+
+    <section>
+    <div id="titre"></div>
+    <div id="carte"><img src="/home/riviere/cours/m1105/javascript/jeu des pays en stan/carte.png" alt="carte"></div>
+    <form id="listes" name="listes"></form>
+    <div id="boutons">
+    <input type="submit" name="reset" value="reset" onclick="init()">
+    <input type="submit" name="valider" value="valider" onclick="valider()">
+    </div>
+    </section>
+    <script type="text/javascript">
+      let apays = new Array('Americanistan','Luxembourguistan','Lichensteinstan','Angladistan','Topaloffistan','Dénezistan','Maubeugistan');
+      let ipays = new Array(1,5,6,0,3,4,2);
+
+      function init(){
+
+        let vrac='';
+        document.getElementById('titre').innerHTML='<p>le jeu des stan</p>'
+
+        console.log(apays.length);
+        for(let i=0;i<apays.length;i++)
+        {
+          console.log(vrac);
+          vrac+='<div id="numero'+i+'">'+(i+1)+' - <select name="liste'+i+'" class="liste" onchange="selpays(this);">';
+          vrac+='<option value="" selected>...</option>\n';
+          apays.forEach(pays => vrac+='<option value="'+pays+'">'+pays+'</option>\n');
+
+          vrac+='</select></div>\n';
+        }
+        console.log(vrac);
+        document.getElementById('listes').innerHTML=vrac;
+      }
+      function valider(){
+        for(let i=0;i<apays;i++){
+          if((document.forms['listes'].elements['liste'+i].selectedIndex-1)==ipays[i])
+            document.getElementById('numero'+i).className='ok';
+          else
+            document.getElementById('numero'+i).className='nok';
+        }
+      }
+      function reinit(){
+        for(let i=0;i<apays.length;i++){
+          document.forms['listes'].element['liste'+i].selectedIndex=0;
+          document.getElementById('numero'+i).className='';
+        }
+      }
+      init();
+    </script>
+  </body>
+</html>

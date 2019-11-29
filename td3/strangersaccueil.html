@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>td2</title>
+  </head>
+  <body>
+  <input type="button" id="button1" value="afficheTableau" onclick="afficheTableau()">
+  <script type="text/javascript">
+    const etudiants = ['Jules','agatha','asterix','idefix','Zazou','Robert'];
+    function afficheTableau(){
+      for(let i=0;i<etudiants.length;i++){
+        let li=document.createElement("li");
+        let texte=document.createTextNode(item[0]+" : "+item[1]);
+        li.appendChild(texte);
+        ul.appendChild(li);;
+      }
+    }
+
+
+  </script>
+  </body>
+</html>

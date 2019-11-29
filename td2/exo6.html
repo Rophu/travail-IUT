@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>afficher/masquer en JS</title>
+  </head>
+  <body>
+    <header>
+      <h1>afficher/masquer en JS</h1>
+    </header>
+      <p id="p1">Paragraphe à masquer... </p>
+      <input type="button" id="cache" value="Cacher" onclick="cacher()">
+      <input type="button" id="couleur" value="Changer Couleur" onclick="changerCouleur()">
+      <script type="text/javascript">
+        function genererCouleur(){
+          let rep = "rgb("
+          rep = rep + ((Math.random()*100)%256)+",";
+          rep= rep + ((Math.random()*100)%256)+",";
+          rep= rep + ((Math.random()*100)%256)+")";
+          console.log(rep);
+          return rep;
+        }
+        function changerCouleur(){
+          document.body.style.background= genererCouleur();
+        }
+        function cacher(){
+          const p = document.getElementById("p1");
+          const b = document.getElementById("cache");
+          if (p.hidden){
+            b.value="Cacher";
+            p.hidden=false;
+          }else{
+            p.hidden = true;
+            b.value = "Afficher";
+          }
+        }
+
+      </script>
+  </body>
+</html>

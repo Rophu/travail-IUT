@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Selection de liens en JS</title>
+
+  </head>
+  <body>
+    <h2>Des liens</h2>
+    <ul>
+      <li id="rouge"><a href="#"></a>Page 1</li>
+      <li><a href="#"></a>Page 2</li>
+      <li><a href="#"></a>Page 3</li>
+      <li><a href="#"></a>Page 4</li>
+
+    </ul>
+    <img src="https://media1.giphy.com/media/Uq5Ol0r2Sxo0JQPvQF/giphy.gif?cid=790b76116981960da88ab1e91bef3a3801f1bbcba0da5ff3&rid=giphy.gif" alt="Berzerk" id="GrosseBrute" onclick="changeImage()">
+
+    <input type="button" name="nbLiens" value="compteLesLiens" onclick="compteLiens()">
+    <input type="button" name="afficheLiens" value="afficheLesLiens" onclick="afficherLiens()">
+    <input type="button" name="SupprimeListe" value="SupprimeLesListes" onclick="supprimerBoutons()">
+    <input type="button" name="SupprimeLiensListeRouge" value="SupprimeLiensListesRouge" onclick="supprimerLiensDansListeEnRouge()">
+    <script type="text/javascript">
+      function supprimerBoutons(){
+        let lesBoutons = document.querySelectorAll('input[type="button"]');
+        console.log("lesBoutons");
+        for (let i=0;i<lesBoutons.length;i++){
+          let parent = lesBoutons[i].parentNode;
+          parent.removeChild(lesBoutons[i]);
+        }
+      }
+      function changerLesLiensCss(){
+        let lesLinks = document.querySelectorAll('link');
+      }
+
+
+      function supprimerLiensDansListeEnRouge(){
+        let liens = document.querySelectorAll('ul a');
+        for (let i=0;i<liens.length;i++){
+          liens[i].classList.add("rouge");
+        }
+      }
+
+      function changeImage(){
+        const p = document.getElementById("GrosseBrute");
+        console.log(p.src);
+        if (p.src=="https://media1.giphy.com/media/Uq5Ol0r2Sxo0JQPvQF/giphy.gif?cid=790b76116981960da88ab1e91bef3a3801f1bbcba0da5ff3&rid=giphy.gif")
+        {
+          p.src="https://i.giphy.com/media/Rgo50jdPhiJRiGQH9C/giphy.webp";
+        }
+        else {
+
+          p.src = "https://media1.giphy.com/media/Uq5Ol0r2Sxo0JQPvQF/giphy.gif?cid=790b76116981960da88ab1e91bef3a3801f1bbcba0da5ff3&rid=giphy.gif";
+        }
+
+      }
+
+
+      function recupererLiens(){
+        return document.getElementsByTagName("a");
+      }
+      let rep = recupererLiens();
+      console.log(typeof rep);
+      console.log(rep);
+
+
+      function compteLiens(){
+        let compteur = recupererLiens();
+        alert("il y a "+compteur.length+" liens dans la page");
+      }
+      function afficherLiens(){
+        let compteur = recupererLiens();
+        for (let i=0; i<compteur.length;i++){
+          alert(compteur[i]);
+        }
+      }
+
+
+    </script>
+  </body>
+</html>
